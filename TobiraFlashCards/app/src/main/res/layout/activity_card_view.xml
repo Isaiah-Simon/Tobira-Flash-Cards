@@ -13,5 +13,27 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Card Question"
+        android:id="@+id/cardAnswerTxtView"
+        android:textSize="26sp"
+        android:layout_above="@+id/cardAnswerTxtView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Card Answer"
+        android:id="@+id/cardAnswerTxtView"
+        android:textSize="26sp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Answer"
+        android:id="@+id/showAnswerBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
