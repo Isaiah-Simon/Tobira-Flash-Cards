@@ -23,8 +23,8 @@ public class CardView extends AppCompatActivity {
 
         // Array used to test showing data
         final Card test = new Card("食べ物", "たべもの\n(Food)");
-        final Card test1 = new Card("飲み物", "飲み物\n(Drinks)");
-        final Card test2 = new Card("早く", "早く\n(Fast)");
+        final Card test1 = new Card("飲み物", "のみもの\n(Drinks)");
+        final Card test2 = new Card("早く", "はやく\n(Fast)");
         final Card test3 = new Card("眠い", "ねむい\n(Sleepy)");
         final ArrayList<Card> cards = new ArrayList<>();
         cards.add(test);
@@ -63,10 +63,11 @@ public class CardView extends AppCompatActivity {
                 if(i == cards.size()){
                     i = 0;
                 }
-                //Hides Answer text view
-                mCardAnswerTextView.setVisibility(View.GONE);
                 //Shows next question
                 mCardQuestionTextView.setVisibility(View.VISIBLE);
+                //Hides Answer text view
+                mCardAnswerTextView.setVisibility(View.GONE);
+
                 //Set text of next question
                 mCardQuestionTextView.setText(cards.get(i).getQuestion());
                 // Shows show answer button
