@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Card Question"
-        android:id="@+id/cardAnswerTxtView"
+        android:id="@+id/cardQuestionTextView"
         android:textSize="26sp"
         android:layout_above="@+id/cardAnswerTxtView"
         android:layout_centerHorizontal="true"
@@ -28,7 +28,8 @@
         android:textSize="26sp"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:elegantTextHeight="true"/>
+        android:elegantTextHeight="true"
+        android:visibility="invisible"/>
 
     <Button
         android:layout_width="match_parent"
@@ -38,5 +39,16 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Next Card"
+        android:id="@+id/shownextCard"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:visibility="invisible"/>
 
 </RelativeLayout>
