@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/cardQuestionTextView"
         android:textSize="26sp"
+        android:text="Question"
         android:layout_above="@+id/cardAnswerTxtView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
