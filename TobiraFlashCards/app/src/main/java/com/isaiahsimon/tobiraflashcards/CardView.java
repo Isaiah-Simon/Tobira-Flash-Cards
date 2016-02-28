@@ -20,22 +20,22 @@ public class CardView extends AppCompatActivity {
         setContentView(R.layout.activity_card_view);
 
         // Array used to test showing data
-        final int[] answerArr = new int[]{1,2,3,4};
-        final String[] questionArr = new String[]{"あ","い","え","う"};
+        final Card test = new Card("What is the answer?", "42");
 
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
         mCardQuestionTextView = (TextView) findViewById(R.id.cardQuestionTextView);
         mShowCardButton = (Button) findViewById(R.id.showAnswerBtn);
         mNextCard = (Button) findViewById(R.id.shownextCard);
 
+        //Show initial card question
+        mCardQuestionTextView.setText(test.getQuestion());
+
         View.OnClickListener showAnswer = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random r = new Random();
-                Integer i = new Integer(r.nextInt(answerArr.length));
                 //Shows answer
                 mCardAnswerTextView.setVisibility(View.VISIBLE);
-                mCardAnswerTextView.setText(i.toString());
+                mCardAnswerTextView.setText(test.getAnswer());
                 // Hides show answer button
                 mShowCardButton.setVisibility(View.GONE);
                 //Shows next card button
@@ -46,14 +46,12 @@ public class CardView extends AppCompatActivity {
         View.OnClickListener nextCard = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Random r = new Random();
-                int i = r.nextInt(questionArr.length);
                 //Hides Answer text view
                 mCardAnswerTextView.setVisibility(View.GONE);
                 //Shows next question
                 mCardQuestionTextView.setVisibility(View.VISIBLE);
                 //Set text of next question
-                mCardQuestionTextView.setText(questionArr[i]);
+                mCardQuestionTextView.setText(test.getQuestion());
                 // Shows show answer button
                 mShowCardButton.setVisibility(View.VISIBLE);
                 //Hides next card button
