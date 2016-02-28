@@ -22,10 +22,10 @@ public class CardView extends AppCompatActivity {
         setContentView(R.layout.activity_card_view);
 
         // Array used to test showing data
-        final Card test = new Card("食べ物", "たべもの\n(Food)");
-        final Card test1 = new Card("飲み物", "のみもの\n(Drinks)");
-        final Card test2 = new Card("早く", "はやく\n(Fast)");
-        final Card test3 = new Card("眠い", "ねむい\n(Sleepy)");
+        final Card test = new Card("食べ物", "たべもの\nFood");
+        final Card test1 = new Card("飲み物", "のみもの\nDrinks");
+        final Card test2 = new Card("早く", "はやく\nFast");
+        final Card test3 = new Card("眠い", "ねむい\nSleepy");
         final ArrayList<Card> cards = new ArrayList<>();
         cards.add(test);
         cards.add(test1);
@@ -63,13 +63,12 @@ public class CardView extends AppCompatActivity {
                 if(i == cards.size()){
                     i = 0;
                 }
-                //Shows next question
-                mCardQuestionTextView.setVisibility(View.VISIBLE);
                 //Hides Answer text view
                 mCardAnswerTextView.setVisibility(View.GONE);
-
                 //Set text of next question
                 mCardQuestionTextView.setText(cards.get(i).getQuestion());
+                //Shows next question
+                mCardQuestionTextView.setVisibility(View.VISIBLE);
                 // Shows show answer button
                 mShowCardButton.setVisibility(View.VISIBLE);
                 //Hides next card button
