@@ -5,12 +5,8 @@ import java.util.ArrayList;
 /**
  * Created by isimon on 2/28/2016.
  */
-public class Deck extends ArrayList {
+public class Deck<Card> extends ArrayList<Card>{
     private String name;
-
-    public Deck(){
-
-    }
 
     public void setName(String name){
         this.name = name;
