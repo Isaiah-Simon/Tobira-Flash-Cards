@@ -30,7 +30,7 @@ public class Deck<Card> extends ArrayList<Card> implements Serializable{
 
     public void save(Context context) {
         try {
-            FileOutputStream fileOutputStream = context.openFileOutput("TestDeck.ser", Context.MODE_PRIVATE);
+            FileOutputStream fileOutputStream = context.openFileOutput(name + ".ser", Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(this);
             objectOutputStream.close();
@@ -41,9 +41,8 @@ public class Deck<Card> extends ArrayList<Card> implements Serializable{
         }
     }
 
-    public static Deck load(Context context) {
+    public static Deck load(String fileName, Context context) {
         Deck deck = null;
-        String fileName = "TestDeck.ser";
         try {
             FileInputStream fileInputStream = context.openFileInput(fileName);
             ObjectInputStream ois = new ObjectInputStream(fileInputStream);
