@@ -29,11 +29,15 @@ public class CardView extends AppCompatActivity {
         final Card test2 = new Card("早く", "はやく\nFast");
         final Card test3 = new Card("眠い", "ねむい\nSleepy");
         final Deck<Card> deck = new Deck<Card>();
+        deck.setName("TestDeck");
+        deck.save(getApplicationContext());
         deck.add(test);
         deck.add(test1);
         deck.add(test2);
         deck.add(test3);
-        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
+        deck.save(getApplicationContext());
+        final Deck<Card> shuffleDeck = (Deck<Card>) Deck.load(deck.getName() + ".ser", getApplicationContext());
+
 
 
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
@@ -108,9 +112,6 @@ public class CardView extends AppCompatActivity {
         mNextCard.setOnClickListener(nextCard);
 
         //Code for toggling toggle
-        //
-        //To do: Fix bug that won't change to shuffle on the first initialization
-        //
         mToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //Reset i to 0 so that the deck restarts
