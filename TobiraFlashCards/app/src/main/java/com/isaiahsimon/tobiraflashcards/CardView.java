@@ -2,6 +2,7 @@ package com.isaiahsimon.tobiraflashcards;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -31,11 +32,15 @@ public class CardView extends AppCompatActivity {
         final Card test2 = new Card("早く", "はやく\nFast");
         final Card test3 = new Card("眠い", "ねむい\nSleepy");
         final Deck<Card> deck = new Deck<Card>();
+        deck.setName("TestDeck");
+        deck.save(getApplicationContext());
         deck.add(test);
         deck.add(test1);
         deck.add(test2);
         deck.add(test3);
-        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
+        deck.save(getApplicationContext());
+        final Deck<Card> shuffleDeck = (Deck<Card>) Deck.load(deck.getName() + ".ser", getApplicationContext());
+
 
 
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
@@ -45,7 +50,7 @@ public class CardView extends AppCompatActivity {
         mToggleButton = (ToggleButton) findViewById(R.id.shuffleToggleButton);
 
         //Show initial card question
-        mCardQuestionTextView.setText(deck.get(0).getQuestion());
+        mCardQuestionTextView.setText(shuffleDeck.get(0).getQuestion());
 
         View.OnClickListener showAnswer = new View.OnClickListener() {
             @Override
