@@ -39,7 +39,7 @@ public class CardView extends AppCompatActivity {
         deck.add(test2);
         deck.add(test3);
         deck.save(getApplicationContext());
-        final Deck<Card> shuffleDeck = (Deck<Card>) Deck.load(getApplicationContext());
+        final Deck<Card> shuffleDeck = (Deck<Card>) Deck.load(deck.getName() + ".ser", getApplicationContext());
 
 
 
