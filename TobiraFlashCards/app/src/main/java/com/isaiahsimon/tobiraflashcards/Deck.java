@@ -27,34 +27,4 @@ public class Deck<Card> extends ArrayList<Card> implements Serializable{
     public String getName(){
         return  name;
     }
-
-    public void save(Context context) {
-        try {
-            FileOutputStream fileOutputStream = context.openFileOutput(name + ".ser", Context.MODE_PRIVATE);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(this);
-            objectOutputStream.close();
-            fileOutputStream.close();
-            Log.d(TAG, "Saved File Successfully");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static Deck load(String fileName, Context context) {
-        Deck deck = null;
-        try {
-            FileInputStream fileInputStream = context.openFileInput(fileName);
-            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
-            deck = (Deck) ois.readObject();
-            ois.close();
-            Log.d("Deck Load", deck.getName());
-            fileInputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return deck;
-    }
 }
