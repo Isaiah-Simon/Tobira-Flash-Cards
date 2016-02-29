@@ -64,7 +64,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:checked="false"
-        android:textOff="Shuffle"
-        android:textOn="Shuffle"/>
+        android:textOff="Shuffle: off"
+        android:textOn="Shuffle: on"/>
 
 </RelativeLayout>
