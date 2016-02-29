@@ -8,9 +8,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class CardView extends AppCompatActivity {
     private TextView mCardAnswerTextView;
@@ -110,6 +108,9 @@ public class CardView extends AppCompatActivity {
         mNextCard.setOnClickListener(nextCard);
 
         //Code for toggling toggle
+        //
+        //To do: Fix bug that won't change to shuffle on the first initialization
+        //
         mToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //Reset i to 0 so that the deck restarts
