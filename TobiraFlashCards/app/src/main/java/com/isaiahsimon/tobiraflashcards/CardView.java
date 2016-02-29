@@ -26,13 +26,11 @@ public class CardView extends AppCompatActivity {
         final Card test1 = new Card("飲み物", "のみもの\nDrinks");
         final Card test2 = new Card("早く", "はやく\nFast");
         final Card test3 = new Card("眠い", "ねむい\nSleepy");
-        final ArrayList<Card> cards = new ArrayList<>();
-        cards.add(test);
-        cards.add(test1);
-        cards.add(test2);
-        cards.add(test3);
-
-
+        final Deck<Card> deck = new Deck<Card>();
+        deck.add(test);
+        deck.add(test1);
+        deck.add(test2);
+        deck.add(test3);
 
 
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
@@ -41,14 +39,14 @@ public class CardView extends AppCompatActivity {
         mNextCard = (Button) findViewById(R.id.shownextCard);
 
         //Show initial card question
-        mCardQuestionTextView.setText(cards.get(0).getQuestion());
+        mCardQuestionTextView.setText(deck.get(0).getQuestion());
 
         View.OnClickListener showAnswer = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Shows answer
                 mCardAnswerTextView.setVisibility(View.VISIBLE);
-                mCardAnswerTextView.setText(cards.get(i).getAnswer());
+                mCardAnswerTextView.setText(deck.get(i).getAnswer());
                 // Hides show answer button
                 mShowCardButton.setVisibility(View.GONE);
                 //Shows next card button
@@ -60,13 +58,13 @@ public class CardView extends AppCompatActivity {
         View.OnClickListener nextCard = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(i == cards.size()){
+                if(i == deck.size()){
                     i = 0;
                 }
                 //Hides Answer text view
                 mCardAnswerTextView.setVisibility(View.GONE);
                 //Set text of next question
-                mCardQuestionTextView.setText(cards.get(i).getQuestion());
+                mCardQuestionTextView.setText(deck.get(i).getQuestion());
                 //Shows next question
                 mCardQuestionTextView.setVisibility(View.VISIBLE);
                 // Shows show answer button
