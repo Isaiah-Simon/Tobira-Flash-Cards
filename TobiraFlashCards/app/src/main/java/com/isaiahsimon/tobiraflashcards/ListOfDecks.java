@@ -19,21 +19,10 @@ public class ListOfDecks extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.deckListView);
 
         //Create Test array
-        final Card test = new Card("食べ物", "たべもの\nFood");
-        final Card test1 = new Card("飲み物", "のみもの\nDrinks");
-        final Card test2 = new Card("早く", "はやく\nFast");
-        final Card test3 = new Card("眠い", "ねむい\nSleepy");
-        final Deck<Card> deck = new Deck<Card>();
-        deck.add(test);
-        deck.add(test1);
-        deck.add(test2);
-        deck.add(test3);
+        String[] strings = new String[]{"test1","test2","test3"};
 
-        //
-        // Todo: Now do with deck Objects
-        //
-        ArrayAdapter<Card> adapter = new ArrayAdapter<Card>(this, android.R.layout.simple_list_item_1,
-                android.R.id.text1, deck);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+                android.R.id.text1, strings);
 
         listView.setAdapter(adapter);
 
