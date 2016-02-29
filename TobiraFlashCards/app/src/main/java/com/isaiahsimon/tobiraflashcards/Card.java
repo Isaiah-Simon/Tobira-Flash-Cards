@@ -19,4 +19,8 @@ public class Card {
     public String getAnswer(){
         return answer;
     }
+
+    public String toString() {
+        return question;
+    }
 }
