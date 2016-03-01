@@ -21,6 +21,7 @@ public class CardView extends AppCompatActivity {
     private Button mMediumPriority;
     private Button mHardPriority;
     private TextView mPriority;
+    //Int used to keep track of deck counter
     public int i = 0;
 
     @Override
@@ -61,6 +62,8 @@ public class CardView extends AppCompatActivity {
 
         //Show initial card question
         mCardQuestionTextView.setText(deck.get(0).getQuestion());
+
+        //Shows proper priority
         if(deck.get(i).getPriority() == 0){
             mPriority.setText("Priority: Easy");
         }else if(deck.get(i).getPriority() == 1){
@@ -101,7 +104,10 @@ public class CardView extends AppCompatActivity {
         View.OnClickListener easy = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Sets Prioirity to Easy
                 deck.get(i-1).setPriority(0);
+
+                //Shows proper priority
                 if(deck.get(i).getPriority() == 0){
                     mPriority.setText("Priority: Easy");
                 }else if(deck.get(i).getPriority() == 1){
@@ -150,7 +156,10 @@ public class CardView extends AppCompatActivity {
         View.OnClickListener medium = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Sets Priority to Medium
                 deck.get(i-1).setPriority(1);
+
+                //Shows proper priority
                 if(deck.get(i).getPriority() == 0){
                     mPriority.setText("Priority: Easy");
                 }else if(deck.get(i).getPriority() == 1){
@@ -199,7 +208,10 @@ public class CardView extends AppCompatActivity {
         View.OnClickListener hard = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Sets Priority to Hard
                 deck.get(i-1).setPriority(2);
+
+                //Shows proper priority
                 if(deck.get(i).getPriority() == 0){
                     mPriority.setText("Priority: Easy");
                 }else if(deck.get(i).getPriority() == 1){
@@ -261,6 +273,16 @@ public class CardView extends AppCompatActivity {
                     // show the beginning of the non-shuffled deck and hide the answer
 
                     mCardQuestionTextView.setText(deck.get(0).getQuestion());
+
+                    //Shows proper priority
+                    if(deck.get(i).getPriority() == 0){
+                        mPriority.setText("Priority: Easy");
+                    }else if(deck.get(i).getPriority() == 1){
+                        mPriority.setText("Priority: Medium");
+                    }else if(deck.get(i).getPriority() == 2){
+                        mPriority.setText("Priority: Hard");
+                    }
+
                     mCardAnswerTextView.setVisibility(View.GONE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
@@ -273,6 +295,15 @@ public class CardView extends AppCompatActivity {
                     // If it is not checked and the answer is not visible,
                     // show the beginning of the non-shuffled deck
 
+                    //Shows proper priority
+                    if(deck.get(i).getPriority() == 0){
+                        mPriority.setText("Priority: Easy");
+                    }else if(deck.get(i).getPriority() == 1){
+                        mPriority.setText("Priority: Medium");
+                    }else if(deck.get(i).getPriority() == 2){
+                        mPriority.setText("Priority: Hard");
+                    }
+
                     mCardQuestionTextView.setText(deck.get(0).getQuestion());
 
                 }else if(isChecked && mCardAnswerTextView.getVisibility() == View.VISIBLE){
@@ -280,6 +311,16 @@ public class CardView extends AppCompatActivity {
                     // show the beginning of the shuffled deck and hide the answer
 
                     Collections.shuffle(shuffleDeck);
+
+                    //Shows proper priority
+                    if(shuffleDeck.get(i).getPriority() == 0){
+                        mPriority.setText("Priority: Easy");
+                    }else if(shuffleDeck.get(i).getPriority() == 1){
+                        mPriority.setText("Priority: Medium");
+                    }else if(shuffleDeck.get(i).getPriority() == 2){
+                        mPriority.setText("Priority: Hard");
+                    }
+
                     mCardQuestionTextView.setText(shuffleDeck.get(0).getQuestion());
                     mCardAnswerTextView.setVisibility(View.GONE);
                     // Shows show answer button
@@ -293,7 +334,18 @@ public class CardView extends AppCompatActivity {
                     // If it is checked and the answer is not visible, shuffle the deck,
                     // show the beginning of the shuffled deck
 
+                    //Shuffles Deck
                     Collections.shuffle(shuffleDeck);
+
+                    //Shows proper priority
+                    if(shuffleDeck.get(i).getPriority() == 0){
+                        mPriority.setText("Priority: Easy");
+                    }else if(shuffleDeck.get(i).getPriority() == 1){
+                        mPriority.setText("Priority: Medium");
+                    }else if(shuffleDeck.get(i).getPriority() == 2){
+                        mPriority.setText("Priority: Hard");
+                    }
+
                     mCardQuestionTextView.setText(shuffleDeck.get(0).getQuestion());
                 }
             }
