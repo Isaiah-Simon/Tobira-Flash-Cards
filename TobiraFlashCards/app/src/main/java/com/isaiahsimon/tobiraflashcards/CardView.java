@@ -28,26 +28,22 @@ public class CardView extends AppCompatActivity {
         int deckIndex = mIntent.getIntExtra("intPosition", 0);
 
         // Array used to test showing data
-<<<<<<< HEAD
-        final Card test = new Card("食べ物", "たべもの\nFood");
-        final Card test1 = new Card("飲み物", "のみもの\nDrinks");
-        final Card test2 = new Card("早く", "はやく\nFast");
-        final Card test3 = new Card("眠い", "ねむい\nSleepy");
-        final Deck<Card> deck = new Deck<Card>();
-        deck.setName("TestDeck");
-        deck.save(getApplicationContext());
-        deck.add(test);
-        deck.add(test1);
-        deck.add(test2);
-        deck.add(test3);
-        deck.save(getApplicationContext());
-        final Deck<Card> shuffleDeck = (Deck<Card>) Deck.load(deck.getName() + ".ser", getApplicationContext());
-
-=======
-        final DeckList<Deck> deckList = DeckList.load(getApplicationContext());
+//        final Deck<Card> deck = DeckCreator.ch1Deck();
+//        final Deck<Card> deck1 = DeckCreator.ch2Deck();
+//        deck.setName("Chapter 1");
+//        deck1.setName("Chapter 2");
+//        DeckList deckList = new DeckList();
+//        deckList.add(deck);
+//        deckList.add(deck1);
+//        deckList.save(getApplicationContext());
+        DeckList<Deck> deckList = DeckList.load(getApplicationContext());
         final Deck<Card> deck = deckList.get(deckIndex);
         final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
->>>>>>> refs/heads/Deck-List-View
+
+
+//        final DeckList<Deck> deckList = DeckList.load(getApplicationContext());
+//        final Deck<Card> deck = deckList.get(deckIndex);
+//        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
 
 
 
@@ -58,7 +54,7 @@ public class CardView extends AppCompatActivity {
         mToggleButton = (ToggleButton) findViewById(R.id.shuffleToggleButton);
 
         //Show initial card question
-        mCardQuestionTextView.setText(shuffleDeck.get(0).getQuestion());
+        mCardQuestionTextView.setText(deck.get(0).getQuestion());
 
         View.OnClickListener showAnswer = new View.OnClickListener() {
             @Override
