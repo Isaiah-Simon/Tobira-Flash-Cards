@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import java.util.ArrayList;
+
 public class ListOfDecks extends AppCompatActivity {
     //Adapter used to display list data
     ListView listView;
@@ -25,14 +27,15 @@ public class ListOfDecks extends AppCompatActivity {
 
         //Create Test array
         DeckList<Deck> deckList = DeckList.load(getApplicationContext());
+        ArrayList<String> names = new ArrayList<String>();
+        for(int i = 0; i< deckList.size(); i++){
+            names.add(deckList.get(i).getName());
+        }
 
-        final ArrayAdapter<Deck> adapter = new ArrayAdapter<Deck>(this, android.R.layout.simple_list_item_1,
-                android.R.id.text1, deckList);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+                android.R.id.text1, names);
 
         listView.setAdapter(adapter);
-
-        int position = 0;
-        Log.d("List Number", "Item click is " + position);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> list, View v, int pos, long id) {
