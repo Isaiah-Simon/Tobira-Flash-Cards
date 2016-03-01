@@ -27,7 +27,6 @@ public class Deck<Card> extends ArrayList<Card> implements Serializable{
     public String getName(){
         return  name;
     }
-<<<<<<< HEAD
 
     public void save(Context context) {
         try {
@@ -59,6 +58,3 @@ public class Deck<Card> extends ArrayList<Card> implements Serializable{
         return deck;
     }
 }
-=======
-}
->>>>>>> refs/heads/Deck-List-View
