@@ -14,6 +14,12 @@ public class Card implements Serializable {
         this.answer = answer;
     }
 
+    public Card(String s){
+        String[] strings = s.split(",");
+        this.question = strings[0];
+        this.answer = strings[1];
+    }
+
     public String getQuestion(){
         return question;
     }
