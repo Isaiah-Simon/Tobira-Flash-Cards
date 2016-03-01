@@ -28,14 +28,16 @@ public class CardView extends AppCompatActivity {
         int deckIndex = mIntent.getIntExtra("intPosition", 0);
 
         // Array used to test showing data
-        final Deck<Card> deck = (Deck<Card>)DeckCreator.ch1Deck();
-        final Deck<Card> deck1 = (Deck<Card>)DeckCreator.ch2Deck();
-        deck.setName("Chapter 1");
-        deck1.setName("Chapter 2");
-        DeckList deckList = new DeckList();
-        deckList.add(deck);
-        deckList.add(deck1);
-        deckList.save(getApplicationContext());
+//        final Deck<Card> deck = DeckCreator.ch1Deck();
+//        final Deck<Card> deck1 = DeckCreator.ch2Deck();
+//        deck.setName("Chapter 1");
+//        deck1.setName("Chapter 2");
+//        DeckList deckList = new DeckList();
+//        deckList.add(deck);
+//        deckList.add(deck1);
+//        deckList.save(getApplicationContext());
+        DeckList<Deck> deckList = DeckList.load(getApplicationContext());
+        final Deck<Card> deck = deckList.get(deckIndex);
         final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
 
 
