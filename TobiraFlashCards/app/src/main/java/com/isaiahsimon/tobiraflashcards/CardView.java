@@ -101,10 +101,11 @@ public class CardView extends AppCompatActivity {
             }
         };
 
+        //Onclick Listener to set Priority to easy
         View.OnClickListener easy = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Sets Prioirity to Easy
+                //Sets Priority to Easy
                 deck.get(i-1).setPriority(0);
 
                 //Shows proper priority
@@ -153,6 +154,7 @@ public class CardView extends AppCompatActivity {
             }
         };
 
+        //Onclick Listener to set Priority to medium
         View.OnClickListener medium = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -205,6 +207,7 @@ public class CardView extends AppCompatActivity {
             }
         };
 
+        //Onclick Listener to set Priority to hard
         View.OnClickListener hard = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,7 +265,7 @@ public class CardView extends AppCompatActivity {
         mMediumPriority.setOnClickListener(medium);
         mHardPriority.setOnClickListener(hard);
 
-        //Code for toggling toggle
+        //Toggle Button Method
         mToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //Reset i to 0 so that the deck restarts
