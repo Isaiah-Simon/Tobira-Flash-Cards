@@ -8,16 +8,19 @@ import java.io.Serializable;
 public class Card implements Serializable {
     private String question;
     private String answer;
+    private int priority;
 
     public Card(String question, String answer){
         this.question = question;
         this.answer = answer;
+        priority = 0;
     }
 
     public Card(String s){
         String[] strings = s.split(",");
         this.question = strings[0];
         this.answer = strings[1];
+        priority = 0;
     }
 
     public String getQuestion(){
@@ -26,6 +29,14 @@ public class Card implements Serializable {
 
     public String getAnswer(){
         return answer;
+    }
+
+    public int getPriority(){
+        return priority;
+    }
+
+    public void setPriority(int priority){
+        this.priority = priority;
     }
 
     public String toString() {
