@@ -29,9 +29,13 @@ public class CardView extends AppCompatActivity {
 
         // Array used to test showing data
         final Deck<Card> deck = (Deck<Card>)DeckCreator.ch1Deck();
+        final Deck<Card> deck1 = (Deck<Card>)DeckCreator.ch2Deck();
         deck.setName("Chapter 1");
+        deck1.setName("Chapter 2");
         DeckList deckList = new DeckList();
         deckList.add(deck);
+        deckList.add(deck1);
+        deckList.save(getApplicationContext());
         final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
 
 
