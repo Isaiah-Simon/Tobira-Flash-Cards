@@ -1,5 +1,6 @@
 package com.isaiahsimon.tobiraflashcards;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,21 +23,13 @@ public class CardView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_view);
+        Intent mIntent = getIntent();
+        int deckIndex = mIntent.getIntExtra("intPosition", 0);
 
         // Array used to test showing data
-        final Card test = new Card("食べ物", "たべもの\nFood");
-        final Card test1 = new Card("飲み物", "のみもの\nDrinks");
-        final Card test2 = new Card("早く", "はやく\nFast");
-        final Card test3 = new Card("眠い", "ねむい\nSleepy");
-        final Deck<Card> deck = new Deck<Card>();
-        deck.setName("TestDeck");
-        deck.save(getApplicationContext());
-        deck.add(test);
-        deck.add(test1);
-        deck.add(test2);
-        deck.add(test3);
-        deck.save(getApplicationContext());
-        final Deck<Card> shuffleDeck = (Deck<Card>) Deck.load(deck.getName() + ".ser", getApplicationContext());
+        final DeckList<Deck> deckList = DeckList.load(getApplicationContext());
+        final Deck<Card> deck = deckList.get(deckIndex);
+        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
 
 
 
