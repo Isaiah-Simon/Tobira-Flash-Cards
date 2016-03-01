@@ -18,6 +18,10 @@ public class CardView extends AppCompatActivity {
     private Button mShowCardButton;
     private Button mNextCard;
     private ToggleButton mToggleButton;
+    private Button mEasyPriority;
+    private Button mMediumPriority;
+    private Button mHardPriority;
+    private TextView mPriority;
     public int i = 0;
 
     @Override
@@ -36,7 +40,7 @@ public class CardView extends AppCompatActivity {
 //        deckList.add(deck);
 //        deckList.add(deck1);
 //        deckList.save(getApplicationContext());
-        DeckList<Deck> deckList = DeckList.load(getApplicationContext());
+        final DeckList<Deck> deckList = DeckList.load(getApplicationContext());
         final Deck<Card> deck = deckList.get(deckIndex);
         final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
 
@@ -52,9 +56,20 @@ public class CardView extends AppCompatActivity {
         mShowCardButton = (Button) findViewById(R.id.showAnswerBtn);
         mNextCard = (Button) findViewById(R.id.shownextCard);
         mToggleButton = (ToggleButton) findViewById(R.id.shuffleToggleButton);
+        mEasyPriority = (Button) findViewById(R.id.easyPriorityButton);
+        mMediumPriority = (Button) findViewById(R.id.mediumPriorityButton);
+        mHardPriority = (Button) findViewById(R.id.hardPriorityButton);
+        mPriority = (TextView) findViewById(R.id.priorityTextView);
 
         //Show initial card question
         mCardQuestionTextView.setText(deck.get(0).getQuestion());
+        if(deck.get(i).getPriority() == 0){
+            mPriority.setText("Priority: Easy");
+        }else if(deck.get(i).getPriority() == 1){
+            mPriority.setText("Priority: Medium");
+        }else if(deck.get(i).getPriority() == 2){
+            mPriority.setText("Priority: Hard");
+        }
 
         View.OnClickListener showAnswer = new View.OnClickListener() {
             @Override
@@ -88,6 +103,149 @@ public class CardView extends AppCompatActivity {
                     i = 0;
                 }
 
+                if(deck.get(i).getPriority() == 0){
+                    mPriority.setText("Priority: Easy");
+                }else if(deck.get(i).getPriority() == 1){
+                    mPriority.setText("Priority: Medium");
+                }else if(deck.get(i).getPriority() == 2){
+                    mPriority.setText("Priority: Hard");
+                }
+
+                if(mToggleButton.isChecked()){
+                    //Hides Answer text view
+                    mCardAnswerTextView.setVisibility(View.GONE);
+                    //Set text of next question
+                    mCardQuestionTextView.setText(shuffleDeck.get(i).getQuestion());
+                    //Shows next question
+                    mCardQuestionTextView.setVisibility(View.VISIBLE);
+                    // Shows show answer button
+                    mShowCardButton.setVisibility(View.VISIBLE);
+                    //Hides next card button
+                    mNextCard.setVisibility(View.GONE);
+                }else{
+                    //Hides Answer text view
+                    mCardAnswerTextView.setVisibility(View.GONE);
+                    //Set text of next question
+                    mCardQuestionTextView.setText(deck.get(i).getQuestion());
+                    //Shows next question
+                    mCardQuestionTextView.setVisibility(View.VISIBLE);
+                    // Shows show answer button
+                    mShowCardButton.setVisibility(View.VISIBLE);
+                    //Hides next card button
+                    mNextCard.setVisibility(View.GONE);
+                }
+
+            }
+        };
+
+        View.OnClickListener easy = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deck.get(i-1).setPriority(0);
+                if(deck.get(i).getPriority() == 0){
+                    mPriority.setText("Priority: Easy");
+                }else if(deck.get(i).getPriority() == 1){
+                    mPriority.setText("Priority: Medium");
+                }else if(deck.get(i).getPriority() == 2){
+                    mPriority.setText("Priority: Hard");
+                }
+
+                deckList.save(getApplicationContext());
+
+                if(i == deck.size()){
+                    i = 0;
+                }
+
+                if(mToggleButton.isChecked()){
+                    //Hides Answer text view
+                    mCardAnswerTextView.setVisibility(View.GONE);
+                    //Set text of next question
+                    mCardQuestionTextView.setText(shuffleDeck.get(i).getQuestion());
+                    //Shows next question
+                    mCardQuestionTextView.setVisibility(View.VISIBLE);
+                    // Shows show answer button
+                    mShowCardButton.setVisibility(View.VISIBLE);
+                    //Hides next card button
+                    mNextCard.setVisibility(View.GONE);
+                }else{
+                    //Hides Answer text view
+                    mCardAnswerTextView.setVisibility(View.GONE);
+                    //Set text of next question
+                    mCardQuestionTextView.setText(deck.get(i).getQuestion());
+                    //Shows next question
+                    mCardQuestionTextView.setVisibility(View.VISIBLE);
+                    // Shows show answer button
+                    mShowCardButton.setVisibility(View.VISIBLE);
+                    //Hides next card button
+                    mNextCard.setVisibility(View.GONE);
+                }
+
+            }
+        };
+
+        View.OnClickListener medium = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deck.get(i-1).setPriority(1);
+                if(deck.get(i).getPriority() == 0){
+                    mPriority.setText("Priority: Easy");
+                }else if(deck.get(i).getPriority() == 1){
+                    mPriority.setText("Priority: Medium");
+                }else if(deck.get(i).getPriority() == 2){
+                    mPriority.setText("Priority: Hard");
+                }
+
+                deckList.save(getApplicationContext());
+
+                if(i == deck.size()){
+                    i = 0;
+                }
+
+                if(mToggleButton.isChecked()){
+                    //Hides Answer text view
+                    mCardAnswerTextView.setVisibility(View.GONE);
+                    //Set text of next question
+                    mCardQuestionTextView.setText(shuffleDeck.get(i).getQuestion());
+                    //Shows next question
+                    mCardQuestionTextView.setVisibility(View.VISIBLE);
+                    // Shows show answer button
+                    mShowCardButton.setVisibility(View.VISIBLE);
+                    //Hides next card button
+                    mNextCard.setVisibility(View.GONE);
+                }else{
+                    //Hides Answer text view
+                    mCardAnswerTextView.setVisibility(View.GONE);
+                    //Set text of next question
+                    mCardQuestionTextView.setText(deck.get(i).getQuestion());
+                    //Shows next question
+                    mCardQuestionTextView.setVisibility(View.VISIBLE);
+                    // Shows show answer button
+                    mShowCardButton.setVisibility(View.VISIBLE);
+                    //Hides next card button
+                    mNextCard.setVisibility(View.GONE);
+                }
+
+            }
+        };
+
+        View.OnClickListener hard = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deck.get(i-1).setPriority(2);
+                if(deck.get(i).getPriority() == 0){
+                    mPriority.setText("Priority: Easy");
+                }else if(deck.get(i).getPriority() == 1){
+                    mPriority.setText("Priority: Medium");
+                }else if(deck.get(i).getPriority() == 2){
+                    mPriority.setText("Priority: Hard");
+                }
+
+                deckList.save(getApplicationContext());
+
+                if(i == deck.size()){
+                    i = 0;
+                }
+
                 if(mToggleButton.isChecked()){
                     //Hides Answer text view
                     mCardAnswerTextView.setVisibility(View.GONE);
@@ -117,6 +275,9 @@ public class CardView extends AppCompatActivity {
 
         mShowCardButton.setOnClickListener(showAnswer);
         mNextCard.setOnClickListener(nextCard);
+        mEasyPriority.setOnClickListener(easy);
+        mMediumPriority.setOnClickListener(medium);
+        mHardPriority.setOnClickListener(hard);
 
         //Code for toggling toggle
         mToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
