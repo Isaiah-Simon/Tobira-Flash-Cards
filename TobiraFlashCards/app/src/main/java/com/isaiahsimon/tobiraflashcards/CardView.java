@@ -1,5 +1,6 @@
 package com.isaiahsimon.tobiraflashcards;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,9 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class CardView extends AppCompatActivity {
     private TextView mCardAnswerTextView;
@@ -25,8 +24,11 @@ public class CardView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card_view);
+        Intent mIntent = getIntent();
+        int deckIndex = mIntent.getIntExtra("intPosition", 0);
 
         // Array used to test showing data
+<<<<<<< HEAD
         final Card test = new Card("食べ物", "たべもの\nFood");
         final Card test1 = new Card("飲み物", "のみもの\nDrinks");
         final Card test2 = new Card("早く", "はやく\nFast");
@@ -40,6 +42,12 @@ public class CardView extends AppCompatActivity {
         deck.add(test3);
         deck.save(getApplicationContext());
         final Deck<Card> shuffleDeck = (Deck<Card>) Deck.load(deck.getName() + ".ser", getApplicationContext());
+
+=======
+        final DeckList<Deck> deckList = DeckList.load(getApplicationContext());
+        final Deck<Card> deck = deckList.get(deckIndex);
+        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
+>>>>>>> refs/heads/Deck-List-View
 
 
 

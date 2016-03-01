@@ -21,4 +21,8 @@ public class Card implements Serializable {
     public String getAnswer(){
         return answer;
     }
+
+    public String toString() {
+        return question;
+    }
 }
