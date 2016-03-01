@@ -8,7 +8,6 @@ import java.io.Serializable;
 public class Card implements Serializable {
     private String question;
     private String answer;
-    private int priority;
 
     public Card(String question, String answer){
         this.question = question;
@@ -29,17 +28,7 @@ public class Card implements Serializable {
         return answer;
     }
 
-    public int getPriority() {
-        return  priority;
-    }
-    
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
-
     public String toString() {
         return question;
     }
-
-
 }
