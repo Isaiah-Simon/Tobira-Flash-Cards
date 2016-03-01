@@ -16,7 +16,6 @@ public class CardView extends AppCompatActivity {
     private TextView mCardAnswerTextView;
     private TextView mCardQuestionTextView;
     private Button mShowCardButton;
-    private Button mNextCard;
     private ToggleButton mToggleButton;
     private Button mEasyPriority;
     private Button mMediumPriority;
@@ -54,7 +53,6 @@ public class CardView extends AppCompatActivity {
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
         mCardQuestionTextView = (TextView) findViewById(R.id.cardQuestionTextView);
         mShowCardButton = (Button) findViewById(R.id.showAnswerBtn);
-        mNextCard = (Button) findViewById(R.id.shownextCard);
         mToggleButton = (ToggleButton) findViewById(R.id.shuffleToggleButton);
         mEasyPriority = (Button) findViewById(R.id.easyPriorityButton);
         mMediumPriority = (Button) findViewById(R.id.mediumPriorityButton);
@@ -80,8 +78,10 @@ public class CardView extends AppCompatActivity {
                     mCardAnswerTextView.setText(shuffleDeck.get(i).getAnswer());
                     // Hides show answer button
                     mShowCardButton.setVisibility(View.GONE);
-                    //Shows next card button
-                    mNextCard.setVisibility(View.VISIBLE);
+                    //Shows priority buttons
+                    mEasyPriority.setVisibility(View.VISIBLE);
+                    mMediumPriority.setVisibility(View.VISIBLE);
+                    mHardPriority.setVisibility(View.VISIBLE);
                     i++;
                 }else{
                     //Shows answer
@@ -89,52 +89,12 @@ public class CardView extends AppCompatActivity {
                     mCardAnswerTextView.setText(deck.get(i).getAnswer());
                     // Hides show answer button
                     mShowCardButton.setVisibility(View.GONE);
-                    //Shows next card button
-                    mNextCard.setVisibility(View.VISIBLE);
+                    //Shows priority buttons
+                    mEasyPriority.setVisibility(View.VISIBLE);
+                    mMediumPriority.setVisibility(View.VISIBLE);
+                    mHardPriority.setVisibility(View.VISIBLE);
                     i++;
                 }
-            }
-        };
-
-        View.OnClickListener nextCard = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(i == deck.size()){
-                    i = 0;
-                }
-
-                if(deck.get(i).getPriority() == 0){
-                    mPriority.setText("Priority: Easy");
-                }else if(deck.get(i).getPriority() == 1){
-                    mPriority.setText("Priority: Medium");
-                }else if(deck.get(i).getPriority() == 2){
-                    mPriority.setText("Priority: Hard");
-                }
-
-                if(mToggleButton.isChecked()){
-                    //Hides Answer text view
-                    mCardAnswerTextView.setVisibility(View.GONE);
-                    //Set text of next question
-                    mCardQuestionTextView.setText(shuffleDeck.get(i).getQuestion());
-                    //Shows next question
-                    mCardQuestionTextView.setVisibility(View.VISIBLE);
-                    // Shows show answer button
-                    mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
-                }else{
-                    //Hides Answer text view
-                    mCardAnswerTextView.setVisibility(View.GONE);
-                    //Set text of next question
-                    mCardQuestionTextView.setText(deck.get(i).getQuestion());
-                    //Shows next question
-                    mCardQuestionTextView.setVisibility(View.VISIBLE);
-                    // Shows show answer button
-                    mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
-                }
-
             }
         };
 
@@ -165,8 +125,10 @@ public class CardView extends AppCompatActivity {
                     mCardQuestionTextView.setVisibility(View.VISIBLE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
+                    //Hides priority buttons
+                    mEasyPriority.setVisibility(View.GONE);
+                    mMediumPriority.setVisibility(View.GONE);
+                    mHardPriority.setVisibility(View.GONE);
                 }else{
                     //Hides Answer text view
                     mCardAnswerTextView.setVisibility(View.GONE);
@@ -176,8 +138,10 @@ public class CardView extends AppCompatActivity {
                     mCardQuestionTextView.setVisibility(View.VISIBLE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
+                    //Hides priority buttons
+                    mEasyPriority.setVisibility(View.GONE);
+                    mMediumPriority.setVisibility(View.GONE);
+                    mHardPriority.setVisibility(View.GONE);
                 }
 
             }
@@ -210,8 +174,10 @@ public class CardView extends AppCompatActivity {
                     mCardQuestionTextView.setVisibility(View.VISIBLE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
+                    //Hides priority buttons
+                    mEasyPriority.setVisibility(View.GONE);
+                    mMediumPriority.setVisibility(View.GONE);
+                    mHardPriority.setVisibility(View.GONE);
                 }else{
                     //Hides Answer text view
                     mCardAnswerTextView.setVisibility(View.GONE);
@@ -221,8 +187,10 @@ public class CardView extends AppCompatActivity {
                     mCardQuestionTextView.setVisibility(View.VISIBLE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
+                    //Hides priority buttons
+                    mEasyPriority.setVisibility(View.GONE);
+                    mMediumPriority.setVisibility(View.GONE);
+                    mHardPriority.setVisibility(View.GONE);
                 }
 
             }
@@ -255,8 +223,10 @@ public class CardView extends AppCompatActivity {
                     mCardQuestionTextView.setVisibility(View.VISIBLE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
+                    //Hides priority buttons
+                    mEasyPriority.setVisibility(View.GONE);
+                    mMediumPriority.setVisibility(View.GONE);
+                    mHardPriority.setVisibility(View.GONE);
                 }else{
                     //Hides Answer text view
                     mCardAnswerTextView.setVisibility(View.GONE);
@@ -266,15 +236,16 @@ public class CardView extends AppCompatActivity {
                     mCardQuestionTextView.setVisibility(View.VISIBLE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
+                    //Hides priority buttons
+                    mEasyPriority.setVisibility(View.GONE);
+                    mMediumPriority.setVisibility(View.GONE);
+                    mHardPriority.setVisibility(View.GONE);
                 }
 
             }
         };
 
         mShowCardButton.setOnClickListener(showAnswer);
-        mNextCard.setOnClickListener(nextCard);
         mEasyPriority.setOnClickListener(easy);
         mMediumPriority.setOnClickListener(medium);
         mHardPriority.setOnClickListener(hard);
@@ -293,8 +264,10 @@ public class CardView extends AppCompatActivity {
                     mCardAnswerTextView.setVisibility(View.GONE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
+                    //Hides priority buttons
+                    mEasyPriority.setVisibility(View.GONE);
+                    mMediumPriority.setVisibility(View.GONE);
+                    mHardPriority.setVisibility(View.GONE);
 
                 } else if (!isChecked && mCardAnswerTextView.getVisibility() == View.GONE) {
                     // If it is not checked and the answer is not visible,
@@ -311,8 +284,10 @@ public class CardView extends AppCompatActivity {
                     mCardAnswerTextView.setVisibility(View.GONE);
                     // Shows show answer button
                     mShowCardButton.setVisibility(View.VISIBLE);
-                    //Hides next card button
-                    mNextCard.setVisibility(View.GONE);
+                    //Hides priority buttons
+                    mEasyPriority.setVisibility(View.GONE);
+                    mMediumPriority.setVisibility(View.GONE);
+                    mHardPriority.setVisibility(View.GONE);
 
                 }else if(isChecked && mCardAnswerTextView.getVisibility() == View.GONE){
                     // If it is checked and the answer is not visible, shuffle the deck,
