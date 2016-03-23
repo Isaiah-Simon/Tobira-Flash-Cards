@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import java.security.AllPermission;
 import java.util.Collections;
 
 public class CardView extends AppCompatActivity {
@@ -25,6 +28,7 @@ public class CardView extends AppCompatActivity {
     private TextView mPriority;
     //Int used to keep track of deck counter
     public int i = 0;
+    public int difficulty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +55,40 @@ public class CardView extends AppCompatActivity {
 //        final Deck<Card> deck = deckList.get(deckIndex);
 //        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
 
-        Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
-        String[] items = new String[]{"All", "Easy", "Medium", "Hard"};
+        final Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        final String[] items = new String[]{"All", "Easy", "Medium", "Hard"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+
+                        int position = dropdown.getSelectedItemPosition();
+                        Toast.makeText(getApplicationContext(), "You have selected " + items[position], Toast.LENGTH_LONG).show();
+
+                        if (items[position].equals("All")) {
+                            difficulty = 4;
+                        }else if(items[position].equals("Easy")){
+                            difficulty = 0;
+                        }else if(items[position].equals("Medium")){
+                            difficulty = 1;
+                        }else if(items[position].equals("Hard")){
+                            difficulty = 2;
+                        }
+                        // TODO Auto-generated method stub
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        // TODO Auto-generated method stub
+
+                    }
+
+                }
+        );
 
 
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
