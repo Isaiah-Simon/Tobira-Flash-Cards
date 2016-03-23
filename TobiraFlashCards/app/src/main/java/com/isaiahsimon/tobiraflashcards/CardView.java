@@ -55,41 +55,6 @@ public class CardView extends AppCompatActivity {
 //        final Deck<Card> deck = deckList.get(deckIndex);
 //        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
 
-        final Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
-        final String[] items = new String[]{"All", "Easy", "Medium", "Hard"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
-        dropdown.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-
-                    @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-
-                        int position = dropdown.getSelectedItemPosition();
-                        Toast.makeText(getApplicationContext(), "You have selected " + items[position], Toast.LENGTH_LONG).show();
-
-                        if (items[position].equals("All")) {
-                            difficulty = 4;
-                        }else if(items[position].equals("Easy")){
-                            difficulty = 0;
-                        }else if(items[position].equals("Medium")){
-                            difficulty = 1;
-                        }else if(items[position].equals("Hard")){
-                            difficulty = 2;
-                        }
-                        // TODO Auto-generated method stub
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> arg0) {
-                        // TODO Auto-generated method stub
-
-                    }
-
-                }
-        );
-
 
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
         mCardQuestionTextView = (TextView) findViewById(R.id.cardQuestionTextView);
@@ -125,7 +90,6 @@ public class CardView extends AppCompatActivity {
                     mEasyPriority.setVisibility(View.VISIBLE);
                     mMediumPriority.setVisibility(View.VISIBLE);
                     mHardPriority.setVisibility(View.VISIBLE);
-                    i++;
                 }else{
                     //Shows answer
                     mCardAnswerTextView.setVisibility(View.VISIBLE);
@@ -136,7 +100,6 @@ public class CardView extends AppCompatActivity {
                     mEasyPriority.setVisibility(View.VISIBLE);
                     mMediumPriority.setVisibility(View.VISIBLE);
                     mHardPriority.setVisibility(View.VISIBLE);
-                    i++;
                 }
             }
         };
@@ -146,7 +109,12 @@ public class CardView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Sets Priority to Easy
-                deck.get(i-1).setPriority(0);
+                deck.get(i).setPriority(0);
+                if(i == deck.size()-1){
+                    i = 0;
+                }else{
+                    i++;
+                }
 
                 
 
@@ -161,7 +129,7 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
-                if(i == deck.size()-1){
+                if(i == deck.size()){
                     i = 0;
                 }
 
@@ -201,7 +169,12 @@ public class CardView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Sets Priority to Medium
-                deck.get(i-1).setPriority(1);
+                deck.get(i).setPriority(1);
+                if(i == deck.size()-1){
+                    i = 0;
+                }else{
+                    i++;
+                }
 
                 //Shows proper priority
                 if(deck.get(i).getPriority() == 0){
@@ -214,7 +187,7 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
-                if(i == deck.size()-1){
+                if(i == deck.size()){
                     i = 0;
                 }
 
@@ -254,7 +227,12 @@ public class CardView extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Sets Priority to Hard
-                deck.get(i-1).setPriority(2);
+                deck.get(i).setPriority(2);
+                if(i == deck.size()-1){
+                    i = 0;
+                }else{
+                    i++;
+                }
 
                 //Shows proper priority
                 if(deck.get(i).getPriority() == 0){
@@ -267,9 +245,6 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
-                if(i == deck.size()-1){
-                    i = 0;
-                }
 
                 if(mToggleButton.isChecked()){
                     //Hides Answer text view
