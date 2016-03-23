@@ -5,8 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -49,6 +51,10 @@ public class CardView extends AppCompatActivity {
 //        final Deck<Card> deck = deckList.get(deckIndex);
 //        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
 
+        Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        String[] items = new String[]{"All", "Easy", "Medium", "Hard"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
 
 
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
