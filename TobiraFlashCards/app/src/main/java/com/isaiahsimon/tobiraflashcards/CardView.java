@@ -148,6 +148,8 @@ public class CardView extends AppCompatActivity {
                 //Sets Priority to Easy
                 deck.get(i-1).setPriority(0);
 
+                
+
                 //Shows proper priority
                 if(deck.get(i).getPriority() == 0){
                     mPriority.setText("Priority: Easy");
@@ -159,7 +161,7 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
-                if(i == deck.size()){
+                if(i == deck.size()-1){
                     i = 0;
                 }
 
@@ -212,7 +214,7 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
-                if(i == deck.size()){
+                if(i == deck.size()-1){
                     i = 0;
                 }
 
@@ -265,7 +267,7 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
-                if(i == deck.size()){
+                if(i == deck.size()-1){
                     i = 0;
                 }
 
