@@ -53,7 +53,7 @@ public class CardView extends AppCompatActivity {
 
 //        final DeckList<Deck> deckList = DeckList.load(getApplicationContext());
 //        final Deck<Card> deck = deckList.get(deckIndex);
-//        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone();
+//        final Deck<Card> shuffleDeck = (Deck<Card>) deck.clone()
 
 
         mCardAnswerTextView = (TextView) findViewById(R.id.cardAnswerTxtView);
@@ -77,115 +77,6 @@ public class CardView extends AppCompatActivity {
             mPriority.setText("Priority: Hard");
         }
 
-        final Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
-        final String[] items = new String[]{"All", "Easy", "Medium", "Hard"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
-        dropdown.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-
-                    @Override
-                    public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                               int arg2, long arg3) {
-
-                        int position = dropdown.getSelectedItemPosition();
-                        Toast.makeText(getApplicationContext(), "You have selected " + items[position], Toast.LENGTH_LONG).show();
-
-                        if (items[position].equals("All")) {
-                            difficulty = 4;
-                        }else if(items[position].equals("Easy")){
-                            difficulty = 0;
-                        }else if(items[position].equals("Medium")){
-                            difficulty = 1;
-                        }else if(items[position].equals("Hard")){
-                            difficulty = 2;
-                        }
-
-                        int rollOver = 0;
-                        if(difficulty != 4){
-                            while(deck.get(i).getPriority() != difficulty){
-                                if(rollOver == 2){
-                                    mCardQuestionTextView.setText("No more cards");
-                                    break;
-                                }
-
-                                if(i == deck.size() - 1){
-                                    i =0;
-                                    rollOver++;
-                                }else{
-                                    i++;
-                                }
-                            }
-                            if(mToggleButton.isChecked()){
-                                //Hides Answer text view
-                                mCardAnswerTextView.setVisibility(View.GONE);
-                                //Set text of next question
-                                mCardQuestionTextView.setText(shuffleDeck.get(i).getQuestion());
-                                //Shows next question
-                                mCardQuestionTextView.setVisibility(View.VISIBLE);
-                                // Shows show answer button
-                                mShowCardButton.setVisibility(View.VISIBLE);
-                                //Hides priority buttons
-                                mEasyPriority.setVisibility(View.GONE);
-                                mMediumPriority.setVisibility(View.GONE);
-                                mHardPriority.setVisibility(View.GONE);
-                            }else{
-                                //Hides Answer text view
-                                mCardAnswerTextView.setVisibility(View.GONE);
-                                //Set text of next question
-                                mCardQuestionTextView.setText(deck.get(i).getQuestion());
-                                //Shows next question
-                                mCardQuestionTextView.setVisibility(View.VISIBLE);
-                                // Shows show answer button
-                                mShowCardButton.setVisibility(View.VISIBLE);
-                                //Hides priority buttons
-                                mEasyPriority.setVisibility(View.GONE);
-                                mMediumPriority.setVisibility(View.GONE);
-                                mHardPriority.setVisibility(View.GONE);
-                            }
-                        }else{
-                            i=0;
-                            if(mToggleButton.isChecked()){
-                                //Hides Answer text view
-                                mCardAnswerTextView.setVisibility(View.GONE);
-                                //Set text of next question
-                                mCardQuestionTextView.setText(shuffleDeck.get(i).getQuestion());
-                                //Shows next question
-                                mCardQuestionTextView.setVisibility(View.VISIBLE);
-                                // Shows show answer button
-                                mShowCardButton.setVisibility(View.VISIBLE);
-                                //Hides priority buttons
-                                mEasyPriority.setVisibility(View.GONE);
-                                mMediumPriority.setVisibility(View.GONE);
-                                mHardPriority.setVisibility(View.GONE);
-                            }else{
-                                //Hides Answer text view
-                                mCardAnswerTextView.setVisibility(View.GONE);
-                                //Set text of next question
-                                mCardQuestionTextView.setText(deck.get(i).getQuestion());
-                                //Shows next question
-                                mCardQuestionTextView.setVisibility(View.VISIBLE);
-                                // Shows show answer button
-                                mShowCardButton.setVisibility(View.VISIBLE);
-                                //Hides priority buttons
-                                mEasyPriority.setVisibility(View.GONE);
-                                mMediumPriority.setVisibility(View.GONE);
-                                mHardPriority.setVisibility(View.GONE);
-                            }
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> arg0) {
-                        // TODO Auto-generated method stub
-
-                    }
-
-                }
-        );
-
         View.OnClickListener showAnswer = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,6 +90,7 @@ public class CardView extends AppCompatActivity {
                     mEasyPriority.setVisibility(View.VISIBLE);
                     mMediumPriority.setVisibility(View.VISIBLE);
                     mHardPriority.setVisibility(View.VISIBLE);
+                    i++;
                 }else{
                     //Shows answer
                     mCardAnswerTextView.setVisibility(View.VISIBLE);
@@ -209,6 +101,7 @@ public class CardView extends AppCompatActivity {
                     mEasyPriority.setVisibility(View.VISIBLE);
                     mMediumPriority.setVisibility(View.VISIBLE);
                     mHardPriority.setVisibility(View.VISIBLE);
+                    i++;
                 }
             }
         };
@@ -221,41 +114,11 @@ public class CardView extends AppCompatActivity {
                 deck.get(i).setPriority(0);
                 if(i == deck.size()-1){
                     i = 0;
-                    int rollOver = 0;
-                    while(difficulty != 4 && deck.get(i).getPriority() != difficulty){
-                        if(i == deck.size()-1){
-                            rollOver++;
-                            i=0;
-                        }else{
-                            i++;
-                        }
-
-                        if(rollOver >= 2){
-                            Toast.makeText(getApplicationContext(), "No cards left", Toast.LENGTH_LONG).show();
-                            break;
-                        }
-
-                    }
                 }else{
                     i++;
-                    int rollOver = 0;
-                    while(difficulty != 4 && deck.get(i).getPriority() != difficulty){
-                        if(i == deck.size()-1){
-                            rollOver++;
-                            i=0;
-                        }else{
-                            i++;
-                        }
-
-                        if(rollOver >= 2){
-                            Toast.makeText(getApplicationContext(), "No cards left", Toast.LENGTH_LONG).show();
-                            break;
-                        }
-
-                    }
                 }
 
-                
+
 
                 //Shows proper priority
                 if(deck.get(i).getPriority() == 0){
@@ -268,7 +131,7 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
-                if(i == deck.size()){
+                if(i == deck.size()-1){
                     i = 0;
                 }
 
@@ -311,38 +174,8 @@ public class CardView extends AppCompatActivity {
                 deck.get(i).setPriority(1);
                 if(i == deck.size()-1){
                     i = 0;
-                    int rollOver = 0;
-                    while(difficulty != 4 && deck.get(i).getPriority() != difficulty){
-                        if(i == deck.size()-1){
-                            rollOver++;
-                            i=0;
-                        }else{
-                            i++;
-                        }
-
-                        if(rollOver >= 2){
-                            Toast.makeText(getApplicationContext(), "No cards left", Toast.LENGTH_LONG).show();
-                            break;
-                        }
-
-                    }
                 }else{
                     i++;
-                    int rollOver = 0;
-                    while(difficulty != 4 && deck.get(i).getPriority() != difficulty){
-                        if(i == deck.size()-1){
-                            rollOver++;
-                            i=0;
-                        }else{
-                            i++;
-                        }
-
-                        if(rollOver >= 2){
-                            Toast.makeText(getApplicationContext(), "No cards left", Toast.LENGTH_LONG).show();
-                            break;
-                        }
-
-                    }
                 }
 
                 //Shows proper priority
@@ -356,7 +189,7 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
-                if(i == deck.size()){
+                if(i == deck.size()-1){
                     i = 0;
                 }
 
@@ -399,38 +232,8 @@ public class CardView extends AppCompatActivity {
                 deck.get(i).setPriority(2);
                 if(i == deck.size()-1){
                     i = 0;
-                    int rollOver = 0;
-                    while(difficulty != 4 && deck.get(i).getPriority() != difficulty){
-                        if(i == deck.size()-1){
-                            rollOver++;
-                            i=0;
-                        }else{
-                            i++;
-                        }
-
-                        if(rollOver >= 2){
-                            Toast.makeText(getApplicationContext(), "No cards left", Toast.LENGTH_LONG).show();
-                            break;
-                        }
-
-                    }
                 }else{
                     i++;
-                    int rollOver = 0;
-                    while(difficulty != 4 && deck.get(i).getPriority() != difficulty){
-                        if(i == deck.size()-1){
-                            rollOver++;
-                            i=0;
-                        }else{
-                            i++;
-                        }
-
-                        if(rollOver >= 2){
-                            Toast.makeText(getApplicationContext(), "No cards left", Toast.LENGTH_LONG).show();
-                            break;
-                        }
-
-                    }
                 }
 
                 //Shows proper priority
@@ -444,6 +247,9 @@ public class CardView extends AppCompatActivity {
 
                 deckList.save(getApplicationContext());
 
+                if(i == deck.size()-1){
+                    i = 0;
+                }
 
                 if(mToggleButton.isChecked()){
                     //Hides Answer text view
