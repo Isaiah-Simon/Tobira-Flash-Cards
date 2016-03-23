@@ -77,6 +77,41 @@ public class CardView extends AppCompatActivity {
             mPriority.setText("Priority: Hard");
         }
 
+        final Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
+        final String[] items = new String[]{"All", "Easy", "Medium", "Hard"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                               int arg2, long arg3) {
+
+                        int position = dropdown.getSelectedItemPosition();
+                        Toast.makeText(getApplicationContext(), "You have selected " + items[position], Toast.LENGTH_LONG).show();
+
+                        if (items[position].equals("All")) {
+                            difficulty = 4;
+                        }else if(items[position].equals("Easy")){
+                            difficulty = 0;
+                        }else if(items[position].equals("Medium")){
+                            difficulty = 1;
+                        }else if(items[position].equals("Hard")){
+                            difficulty = 2;
+                        }
+                        
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                        // TODO Auto-generated method stub
+
+                    }
+
+                }
+        );
+
         View.OnClickListener showAnswer = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
