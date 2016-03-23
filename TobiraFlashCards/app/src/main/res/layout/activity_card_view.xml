@@ -44,17 +44,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Next Card"
-        android:id="@+id/shownextCard"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-
-        android:visibility="invisible"/>
-
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,5 +55,46 @@
         android:checked="false"
         android:textOff="Shuffle: off"
         android:textOn="Shuffle: on"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Priority: 0"
+        android:gravity="center"
+        android:id="@+id/priorityTextView"
+        android:layout_alignBottom="@+id/shuffleToggleButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/shuffleToggleButton"/>
+
+    <Button
+        android:layout_height="wrap_content"
+        android:text="Easy"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        android:id="@+id/easyPriorityButton"
+        android:layout_width="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Medium"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        android:id="@+id/mediumPriorityButton"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Hard"
+        android:visibility="invisible"
+        android:id="@+id/hardPriorityButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
 
 </RelativeLayout>
